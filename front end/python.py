@@ -1,3 +1,9 @@
+import sqlite3  
+connection =  sqlite3.connect("database.db")
+
+connection.close()
+
+
 from flask import Flask, render_template, request, redirect
 app = Flask(__name__)
 @app.route("/")
