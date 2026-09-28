@@ -1,0 +1,37 @@
+* {
+    box-sizing: border-box;
+}
+.login-box {
+    background-color: rgb(114,148,127);
+    width: 1000px;
+    padding: 40px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+body {
+    margin: 10;
+    font-family: Arial, sans-serif;
+    background-color: #efdebf;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 100vh;
+}
+.logo {
+    display: block;
+    width: 600px;
+    height: 200px;
+    margin: 0 auto 10px; 
+}
+
+h1 {
+    margin-bottom: 5px;
+}
+
+p {
+    margin-top: 0;
+}

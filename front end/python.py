@@ -9,7 +9,7 @@ def home():
 def check_login():
     username = request.form.get("username")
     password = request.form.get("password")
-    if username == "man27" and password == "password123":
+    if username == "a" and password == "b":
         return redirect("/main")
     else:
         return "incorrect user or pass"
@@ -18,5 +18,9 @@ def check_login():
 def main():
     return render_template("main.html")
 
+@app.route("/rem")
+def character_view():
+    return render_template("rem.html")
+    
 app.run(debug=True)
     
