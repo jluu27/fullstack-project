@@ -1,5 +1,20 @@
 import sqlite3  
 connection =  sqlite3.connect("database.db")
+cursor = connection.cursor()
+cursor.execute("""
+    CREATE TABLE IF NOT EXISTS users (
+        id INTEGER PRIMARY KEY,
+        username TEXT,
+        password TEXT
+    )
+""")
+
+cursor.execute("SELECT * FROM users")
+
+users = cursor.fetchall()
+
+print(users)
+connection.commit()
 
 connection.close()
 
@@ -13,11 +28,18 @@ def home():
     return render_template('main.html')
 @app.route("/login", methods=["POST"])
 def check_login():
-    username = request.form.get("username")
-    password = request.form.get("password")
-    username = username.lower() 
-    password = password.lower()
-    if username == "a" and password == "b":
+    username = request.form["username"]
+    password = request.form["password"]
+    connection = sqlite3.connect('database.db')
+    cursor = connection.cursor()
+    cursor.execute(
+        "SELECT * FROM users WHERE username = ? AND password = ?",
+        (username, password)
+    )
+    user = cursor.fetchone()
+    connection.close()
+
+    if user:
         return redirect("/main")
     else:
         return "incorrect user or pass"
