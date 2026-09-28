@@ -9,6 +9,8 @@ def home():
 def check_login():
     username = request.form.get("username")
     password = request.form.get("password")
+    username = username.lower() 
+    password = password.lower()
     if username == "a" and password == "b":
         return redirect("/main")
     else:

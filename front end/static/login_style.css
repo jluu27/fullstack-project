@@ -13,7 +13,7 @@
 body {
     margin: 10;
     font-family: Arial, sans-serif;
-    background-color: #efdebf;
+    background: radial-gradient(circle at top, #2a2140 0%, #0d0b14 70%);
 
     display: flex;
     justify-content: center;

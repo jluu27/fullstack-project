@@ -4,12 +4,12 @@
 body {
     margin: 10;
     font-family: Arial, sans-serif;
-    background-color: #efdebf;
-
+    background: radial-gradient(circle at top, #2a2140 0%, #0d0b14 70%);
+    padding: 40px 20px;
     display: block;
     justify-content: center;
     align-items: center;
-
+    text-align: center;
     min-height: 100vh;
 }
 .image-grid {
@@ -22,26 +22,57 @@ body {
     height: 70%;
 }
 h1, p {
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+    color: #f5d78e;
+    text-shadow: 0 0 20px rgba(245, 215, 142, 0.35);
     display: block;
+    
+}
+p {
+    color: #b9b0c9;
+    margin-bottom: 40px;
 }
 .image-button {
     display: flex;
     align-items: center;
     flex-direction: column;
     gap: 10px;
-    padding: 10px 20px;
+    padding: 5px 10px;
     background-color: #93e9ff;
+    height: 400px;
+    width: 300px;
+}
+.character-list {
+    display:flex;
+    justify-content: center;
+    flex-direction: row;;
+    gap: 100px; 
+
 }
 
 .character {
-    width: 120px;
+    width: 290px;
+    height: 240px;
 }
 
 .nameEnglish {
     width: 250px;
+
 }
 
 .nameChinese {
     width: 250px;
+
+}
+
+.nameEnglishRem {
+    width: 150px;
+    height: 60px;
+}
+
+.nameChineseRem {
+    width: 150px;
+    height: 60px;
 }
 
