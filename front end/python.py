@@ -18,9 +18,14 @@ def check_login():
 def main():
     return render_template("main.html")
 
+
 @app.route("/rem")
 def character_view():
     return render_template("rem.html")
-    
+@app.route("/vindicta")
+def character_view2():
+    return render_template("vindicta.html")
+#MAKE THIS A CLASS LATER ON 
+
 app.run(debug=True)
     
