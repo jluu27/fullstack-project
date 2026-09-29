@@ -18,7 +18,7 @@ connection.commit()
 connection.close()
 
 
-from flask import Flask, render_template, request, redirect, session
+from flask import Flask, render_template, request, redirect, session, flash
 app = Flask(__name__)
 app.secret_key = "endminaha"
 @app.route("/")
@@ -42,7 +42,7 @@ def check_login():
         session["username"] = username
         return redirect("/main")
     else:
-        return "incorrect user or pass"
+         return render_template("login.html", error="Incorrect username or password")
 
 @app.route("/main")
 def main():
@@ -60,6 +60,15 @@ def register_user():
     password = request.form["password"]
     connection = sqlite3.connect('database.db')
     cursor = connection.cursor()
+    cursor.execute (
+        "SELECT * FROM users WHERE username = ?",
+        (username,)
+    )
+    existing_user = cursor.fetchone()
+    if existing_user:
+        connection.close()
+        return render_template("register.html", error="Username already exists")
+
     cursor.execute(
         "INSERT INTO users (username, password) VALUES (?, ?)",
         (username, password)

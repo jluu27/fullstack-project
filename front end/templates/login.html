@@ -19,8 +19,11 @@
 
     <label for="password" class='text-box'>Password:</label>
 <input class='labeltext-box' type="password" id = "password" name ="password" placeholder = "">
-</h1>
 
+</h1>
+    {% if error %}
+    <p class="error">{{error}}</p>
+    {% endif %}
 <div class="login-buttons">
      <button class="login-button" type="submit"> Login</button>
      <a href="/register" class="login-button">Create an account</a>  

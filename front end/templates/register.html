@@ -16,15 +16,18 @@
 <form action="/register" method="POST">
 
 
-    <label for="username">Username:</label>
-<input type="text" id="username" name ="username" placeholder="Create a username">
+    <label for="username" class='text-box'>Username:</label>
+<input class='labeltext-box' type="text" id="username" name ="username" placeholder="Create a username">
 
 
 
-    <label for="password">Password:</label>
-<input type="password" id = "password" name ="password" placeholder = "Create a password">
+    <label for="password" class='text-box'>Password:</label>
+<input class='labeltext-box' type="password" id = "password" name ="password" placeholder = "Create a password">
 
-<div> 
+    {% if error %}
+    <p class="error">{{error}}</p>
+    {% endif %}
+<div class="login-buttons"> 
      <button class ="login-button" type="submit"> Create account</button>
      <a href="/" class ="login-button"> Already have an account? Log in </a>
 </div>
