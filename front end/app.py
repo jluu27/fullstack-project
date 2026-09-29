@@ -29,8 +29,10 @@ def login():
 def check_login():
     username = request.form["username"]
     password = request.form["password"]
+
     connection = sqlite3.connect('database.db')
     cursor = connection.cursor()
+    
     cursor.execute(
         "SELECT * FROM users WHERE username = ? AND password = ?",
         (username, password)
@@ -40,9 +42,11 @@ def check_login():
 
     if user:
         session["username"] = username
+        flash("Hello " + username + "!", "success")
         return redirect("/main")
     else:
-         return render_template("login.html", error="Incorrect username or password")
+        flash("Incorrect username or password", "error")
+        return redirect("/")
 
 @app.route("/main")
 def main():
@@ -58,24 +62,29 @@ def register():
 def register_user():
     username = request.form["username"]
     password = request.form["password"]
+
     connection = sqlite3.connect('database.db')
     cursor = connection.cursor()
+
     cursor.execute (
         "SELECT * FROM users WHERE username = ?",
         (username,)
     )
     existing_user = cursor.fetchone()
+
     if existing_user:
         connection.close()
-        return render_template("register.html", error="Username already exists")
-
+        flash("Username already exists", "error")
+        return redirect("/register")
+    
     cursor.execute(
         "INSERT INTO users (username, password) VALUES (?, ?)",
         (username, password)
     )
+
     connection.commit()
     connection.close()
-
+    flash("You have created an account!", "success")
     return redirect("/")
 
 @app.route("/logout")

@@ -95,6 +95,11 @@ button.login-button  {
     margin-top: 10px;
     animation: disappear 5s ease-out 5s forwards;
 }
+.success {
+    color: #00fd9c;
+    font-weight: bold;
+    text-align: center;
+}
 
 h1 {
     margin-bottom: 50px;
