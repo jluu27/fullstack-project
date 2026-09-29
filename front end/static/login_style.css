@@ -7,7 +7,6 @@
     padding: 40px;  
     display: flex;
     flex-direction: column;
-    gap: 30px;
     border: 5px solid rgba(0, 253, 156, 0.3);
     box-shadow:
         0 10px 40px rgba(0, 0, 0, 0.5),
@@ -15,6 +14,8 @@
     margin-top: 30px;
     transition: transform 0.3s ease,
                 box-shadow 0.3s ease;
+    animation: appear 0.7s ease-out;
+
 }
 .login-box:hover{
     transform: translateY(-5px);
@@ -58,7 +59,7 @@ body {
     width: 600px;
     height: 200px;
     margin: 0 auto 10px; 
-    opacity: 0; 
+    opacity: 1; 
 }
 .login-buttons {
     display: flex;
@@ -90,10 +91,21 @@ button.login-button  {
 
 h1 {
     margin-bottom: 50px;
-    margin-top: -30px;
     text-align: center;
+    color: #efdebf;
+    -webkit-text-stroke: 1px  #0d0b14;
 }
 
 p {
     margin-top: 0;
+}
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95); 
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1); 
+    }
 }
