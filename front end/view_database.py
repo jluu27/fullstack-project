@@ -11,4 +11,8 @@ users = cursor.fetchall()
 
 print("Users:", users)
 
+cursor.execute("SELECT * FROM characters")
+characters = cursor.fetchall()
+
+print("characters:", characters)
 connection.close()  

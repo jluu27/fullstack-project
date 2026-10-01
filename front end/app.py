@@ -8,13 +8,56 @@ cursor.execute("""
         password TEXT
     )
 """)
+#users = cursor.fetchall()
 
+#print(users)
+cursor.execute("DROP TABLE IF EXISTS characters")
+cursor.execute("""
+    CREATE TABLE IF NOT EXISTS characters (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT,
+        character_image TEXT,
+        chinese_name_image TEXT,
+        english_name_image TEXT
+)
+""")
+cursor.execute(
+    "SELECT * FROM characters WHERE name = ?",
+    ("Vindicta",)
+)
 
-users = cursor.fetchall()
+existing_character = cursor.fetchone()
 
-print(users)
+if existing_character is None:
+    cursor.execute("""
+        INSERT INTO characters
+        (name, character_image, chinese_name_image, english_name_image)
+        VALUES (?, ?, ?, ?)
+    """, (
+        "Vindicta",
+        "images/vindicta/vindictapfp.png",
+        "images/vindicta/vindictacn.png",
+        "images/vindicta/vindictaeng.png"
+    ))
+cursor.execute(
+    "SELECT * FROM characters WHERE name = ?",
+    ("Rem",)
+)
+
+existing_character = cursor.fetchone()
+
+if existing_character is None:
+    cursor.execute("""
+        INSERT INTO characters
+        (name, character_image, chinese_name_image, english_name_image)
+        VALUES (?, ?, ?, ?)
+    """, (
+        "Rem",
+        "images/rem/rempfp.png",
+        "images/rem/remCn.png",
+        "images/rem/remeng.png"
+    ))
 connection.commit()
-
 connection.close()
 
 
@@ -53,7 +96,15 @@ def main():
     if "username" not in session:
         return redirect("/")
     
-    return render_template("main.html")
+    connection = sqlite3.connect("database.db")
+    cursor = connection.cursor()
+
+    cursor.execute("SELECT * FROM characters")
+    characters = cursor.fetchall()
+
+    connection.close()  
+
+    return render_template("main.html", characters=characters)
 
 @app.route("/register")
 def register():
