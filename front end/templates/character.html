@@ -1,15 +1,45 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>{{ character[1] }}</title>
+    <link rel="stylesheet" href="/static/main_style.css">
 </head>
 
 <body>
 
-    <h1>{{ character[1] }}</h1>
+    <div class="character-page">
 
-    <img src="{{ url_for('static', filename=character[2]) }}"
-         alt="{{ character[1] }}">
+        <img class="character"
+             src="{{ url_for('static', filename=character[2]) }}"
+             alt="{{ character[1] }}">
 
+        {% if character[1] == "Rem" %}
+
+            <img class="nameChineseRem"
+                 src="{{ url_for('static', filename=character[3]) }}"
+                 alt="{{ character[1] }}">
+
+            <img class="nameEnglishRem"
+                 src="{{ url_for('static', filename=character[4]) }}"
+                 alt="{{ character[1] }}">
+
+        {% else %}
+
+            <img class="nameChinese"
+                 src="{{ url_for('static', filename=character[3]) }}"
+                 alt="{{ character[1] }}">
+
+            <img class="nameEnglish"
+                 src="{{ url_for('static', filename=character[4]) }}"
+                 alt="{{ character[1] }}">
+
+        {% endif %}
+
+    </div>
+<div> 
+<a class="login-button" href="/main">Back to Characters</a>
+</div>
 </body>
+
 </html>

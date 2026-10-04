@@ -92,7 +92,12 @@ button.login-button  {
     gap: 100px; 
 
 }
-
+.character-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
 .character {
     width: 290px;
     height: 240px;
