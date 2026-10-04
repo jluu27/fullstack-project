@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ character[1] }}</title>
+</head>
+
+<body>
+
+    <h1>{{ character[1] }}</h1>
+
+    <img src="{{ url_for('static', filename=character[2]) }}"
+         alt="{{ character[1] }}">
+
+</body>
+</html>

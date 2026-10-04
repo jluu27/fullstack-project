@@ -144,13 +144,25 @@ def logout():
     return redirect("/")
 
 
-@app.route("/rem")
-def character_view():
-    return render_template("rem.html")
-@app.route("/vindicta")
-def character_view2():
-    return render_template("vindicta.html")
-#MAKE THIS A CLASS LATER ON 
+@app.route("/character/<character_name>")
+def character(character_name):
+    if "username" not in session:
+        return redirect("/")
+    
+    connection = sqlite3.connect("database.db")
+    cursor = connection.cursor()
+
+    cursor.execute(
+        "SELECT * FROM characters WHERE name = ?",
+        (character_name,)
+    )
+
+    character = cursor.fetchone()
+
+    connection.close()
+
+    return render_template("character.html", character=character)
+    
 
 app.run(debug=True)
     

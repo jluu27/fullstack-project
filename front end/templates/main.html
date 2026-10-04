@@ -20,7 +20,7 @@
 
         {% for character in characters %}
 
-    <form action="/{{ character[1].lower() }}" method="GET">
+    <form action="/character/{{ character[1] }}" method="GET">
 
         <button class="image-button" type="submit">
             <img class="character"
