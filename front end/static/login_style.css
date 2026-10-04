@@ -2,7 +2,7 @@
     box-sizing: border-box;
 }
 .login-box {
-    background-color: rgb(114,148,127);
+   background: radial-gradient(circle at center, #114407 0%, #017e2a 70%);
     width: 1000px;
     padding: 40px;
 
