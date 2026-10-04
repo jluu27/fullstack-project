@@ -17,24 +17,46 @@
 
 
 <div class= "character-list">
-    <form action="/vindicta" method="GET">
+
+        {% for character in characters %}
+
+    <form action="/{{ character[1].lower() }}" method="GET">
+
         <button class="image-button" type="submit">
-        <img class="character" src="/static/images/vindicta/vindictapfp.png" alt="Logo"> 
-        <img class="nameChinese" src="/static/images/vindicta/vindictacn.png" alt="Logo">
-        <img class="nameEnglish" src="/static/images/vindicta/vindictaeng.png" alt="Logo">
-    </button>
+            <img class="character"
+                 src="{{ url_for('static', filename=character[2]) }}"
+                 alt="{{ character[1] }}">
+            {% if character[1] == "Rem" %}
+
+                <img class="nameChineseRem"
+                     src="{{ url_for('static', filename=character[3]) }}"
+                     alt="{{ character[1] }}">
+
+                <img class="nameEnglishRem"
+                     src="{{ url_for('static', filename=character[4]) }}"
+                     alt="{{ character[1] }}">
+
+            {% else %}
+
+                <img class="nameChinese"
+                     src="{{ url_for('static', filename=character[3]) }}"
+                     alt="{{ character[1] }}">
+
+                <img class="nameEnglish"
+                     src="{{ url_for('static', filename=character[4]) }}"
+                     alt="{{ character[1] }}">
+
+{% endif %}
+        </button>
+
     </form>
 
-    <form action="/rem" method="GET">
-        <button class="image-button" type="submit">
-        <img class="character" src="/static/images/rem/rempfp.png" alt="Logo"> 
-        <img class="nameChineseRem" src="/static/images/rem/remCn.png" alt="Logo">
-        <img class="nameEnglishRem" src="/static/images/rem/remeng.png" alt="Logo">
-    </button>
-    </form>
+{% endfor %}
 </div>
 
+<div>
 <a class="login-button" href="/logout">Log Out</a>
+</div>
 
 </body>
 

@@ -2,7 +2,6 @@
     box-sizing: border-box;
 }
 body {
-    margin: 10;
     font-family: Arial, sans-serif;
     background: radial-gradient(circle at top, #2a2140 0%, #0d0b14 70%);
     padding: 40px 20px;
@@ -57,6 +56,12 @@ p {
     animation: disappear 5s ease-out 5s forwards;
 }
 
+.logout-area {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+} 
+
 .login-button {
     display: inline-block;
     padding: 10px 20px;
@@ -79,6 +84,7 @@ p {
 button.login-button  {
     appearance: none;
 } 
+
 .character-list {
     display:flex;
     justify-content: center;
