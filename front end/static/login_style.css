@@ -4,34 +4,128 @@
 .login-box {
    background: radial-gradient(circle at center, #114407 0%, #017e2a 70%);
     width: 1000px;
-    padding: 40px;
+    padding: 40px;  
+    display: flex;
+    flex-direction: column;
+    border: 5px solid rgba(0, 253, 156, 0.3);
+    box-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.5),
+        0 0 25px rgba(0, 253, 156, 0.15);
+    margin-top: 30px;
+    transition: transform 0.3s ease,
+                box-shadow 0.3s ease;
+    animation: appear 0.7s ease-out;
 
-    border-radius: 12px;
-
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
 }
+.login-box:hover{
+    transform: translateY(-5px);
+    transform: scale(1.05);
+}
+
 body {
     margin: 10;
     font-family: Arial, sans-serif;
     background: radial-gradient(circle at top, #2a2140 0%, #0d0b14 70%);
 
     display: flex;
+    gap: 10px;
     justify-content: center;
     align-items: center;
 
     min-height: 100vh;
+}
+.text-box {
+    display: inline-block;
+    color:aqua;
+}
+.labeltext-box {
+    padding: 10px 20px;
+    margin: 8px; 
+    font-size: 16px;
+    background: rgba(0, 0, 0, 0.25);
+    color: white;
+    caret-color: #00fd9c;
+    border: 2px solid black;
+    border-radius: 8px;
+    transition: 0.2s;
+}
+.labeltext-box:focus {
+    outline: none;   
+    border-color: #00fd9c;
+    box-shadow: 0 0 10px rgba(0, 253, 156, 0.5);
 }
 .logo {
     display: block;
     width: 600px;
     height: 200px;
     margin: 0 auto 10px; 
+    opacity: 1; 
+}
+.login-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 350px;
+    justify-content: center;
+}
+.login-button {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    text-align: center;
+    color: black;
+    border: 2px solid #0d0b14;
+    background: radial-gradient(circle at top, #008b51 0%, #00fd9c 70%);
+    transition: transform 0.25s ease, box-shadow 0.25s ease,
+                opacity 0.25s ease, filter 0.25s ease;
+}
+.login-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 40px rgba(94, 234, 212, 0.35);
+}
+.login-button:active {
+    transform: scale(0.95);
+}
+button.login-button  {
+    appearance: none;
+}
+.error {
+    color: #ff4d4d;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+    animation: disappear 5s ease-out 5s forwards;
+}
+.success {
+    color: #00fd9c;
+    font-weight: bold;
+    text-align: center;
 }
 
 h1 {
-    margin-bottom: 5px;
+    margin-bottom: 50px;
+    text-align: center;
+    color: #efdebf;
 }
 
 p {
     margin-top: 0;
+}
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95); 
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1); 
+    }
+}
+@keyframes disappear {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+         
+    }
 }

@@ -5,32 +5,40 @@
     <title>Secret Mongolian deadlock builds</title>
     <link rel="stylesheet" href="/static/login_style.css">
 </head>
+<body> 
 <div class="login-box"> 
 
     <img class="logo" src="/static/images/logo.png">
     
-<body>
-    
     <h1>Enter your username and password</h1>
-    <b>user is a and password is b </b>
 
 <form action="/login" method="POST">
 
+   <h1><label for="username" class='text-box'>Username:</label>
+<input class='labeltext-box' type="username" id="username" name ="username" placeholder="">
 
-    <label for="username">Username:</label>
-<input type="text" id="username" name ="username" placeholder="Enter your username">
+    <label for="password" class='text-box'>Password:</label>
+<input class='labeltext-box' type="password" id = "password" name ="password" placeholder = "">
+
+</h1>
 
 
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% for category, message in messages %}
+           <p class="{{ category }}">{{ message }}</p>
+    {% endfor %}
+{% endwith %}
 
-    <label for="password">Password:</label>
-<input type="password" id = "password" name ="password" placeholder = "Enter your password">
 
-<div> 
-     <button type="submit"> Login</button>
+<div class="login-buttons">
+     <button class="login-button" type="submit"> Login</button>
+     <a href="/register" class="login-button">Create an account</a>  
 </div>
 
-</div>
 </form>
+
+</div>
+
 
 </body>
 

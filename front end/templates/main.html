@@ -6,10 +6,15 @@
 </head>
 
 <body>
-
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% for category, message in messages %}
+        <p class="{{ category }}">{{ message }}</p>
+    {% endfor %}
+{% endwith %}
 <h1>View other player's deadlock builds and create your own builds</h1>
 <p>You will have 100% winrate with these 
     on everyones soul</p>
+
 
 <div class= "character-list">
     <form action="/vindicta" method="GET">
@@ -28,6 +33,8 @@
     </button>
     </form>
 </div>
+
+<a class="login-button" href="/logout">Log Out</a>
 
 </body>
 
