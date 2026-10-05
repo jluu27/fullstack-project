@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Edit Build</title>
+</head>
+
+<body>
+
+    <h1>Edit Build</h1>
+
+    <form action="/edit_build/{{ build[0] }}" method="POST">
+
+        <label for="build_name">Build Name:</label>
+        <input
+            type="text"
+            id="build_name"
+            name="build_name"
+            value="{{ build[3] }}"
+        >
+
+        <br><br>
+
+        <label for="description">Description:</label>
+
+        <textarea
+            id="description"
+            name="description"
+        >{{ build[4] }}</textarea>
+
+        <br><br>
+
+        <button type="submit">Save Changes</button>
+
+    </form>
+
+</body>
+
+</html>

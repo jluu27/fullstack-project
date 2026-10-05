@@ -15,4 +15,10 @@ cursor.execute("SELECT * FROM characters")
 characters = cursor.fetchall()
 
 print("characters:", characters)
+
+cursor.execute("SELECT * FROM builds")
+builds = cursor.fetchall()
+
+print("builds:", builds)
+
 connection.close()  

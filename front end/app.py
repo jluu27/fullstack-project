@@ -32,6 +32,9 @@ cursor.execute("""
 )
 """)
 
+
+connection.commit()
+
 cursor.execute(
     "SELECT * FROM characters WHERE name = ?",
     ("Vindicta",)
@@ -170,10 +173,86 @@ def character(character_name):
 
     character = cursor.fetchone()
 
+    cursor.execute("SELECT * FROM builds WHERE character = ?",
+    (character_name,)
+    )
+    builds = cursor.fetchall()
+
+    print("builds:", builds)
     connection.close()
 
-    return render_template("character.html", character=character)
-    
+    return render_template("character.html", character=character, builds=builds)
 
+@app.route("/create_build")
+def create_build():
+    if "username" not in session:
+        return redirect("/")
+
+    return render_template("create_build.html")
+@app.route("/create_build", methods=["POST"])
+def save_build():
+    build_name = request.form["build_name"]
+    description = request.form["description"]
+    character = request.form["character"]
+    username = session["username"]
+
+    connection = sqlite3.connect("database.db")
+    cursor = connection.cursor()
+
+    cursor.execute("""
+        INSERT INTO builds
+        (username, character, build_name, description)
+        VALUES (?, ?, ?, ?)
+    """, (
+        username,
+        character,
+        build_name,
+        description
+    ))
+
+    connection.commit()
+    connection.close()
+
+    return redirect("/main")
+@app.route("/edit_build/<int:build_id>")
+def edit_build(build_id):
+    if "username" not in session:
+        return redirect("/")
+
+    connection = sqlite3.connect("database.db")
+    cursor = connection.cursor()
+
+    cursor.execute(
+        "SELECT * FROM builds WHERE id = ?",
+        (build_id,)
+    )
+
+    build = cursor.fetchone()
+
+    connection.close()
+
+    return render_template("edit_build.html", build=build)
+@app.route("/edit_build/<int:build_id>", methods=["POST"])
+def save_edit(build_id):
+    build_name = request.form["build_name"]
+    description = request.form["description"]
+
+    connection = sqlite3.connect("database.db")
+    cursor = connection.cursor()
+
+    cursor.execute("""
+        UPDATE builds
+        SET build_name = ?, description = ?
+        WHERE id = ?
+    """, (
+        build_name,
+        description,
+        build_id
+    ))
+
+    connection.commit()
+    connection.close()
+
+    return redirect("/main")
 app.run(debug=True)
     
