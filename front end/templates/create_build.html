@@ -3,7 +3,7 @@
 
 <head>
     <title>Create Build</title>
-    <link rel="stylesheet" href="/static/main_style.css">
+    <link rel="stylesheet" href="/static/login_style.css">
 </head>
 
 <body>
@@ -12,23 +12,23 @@
 
     <form action="/create_build" method="POST">
 
-        <label for="build_name">Build Name:</label>
-        <input type="text" id="build_name" name="build_name">
+        <label for="build_name" class='text-box'>Build Name:</label>
+        <input class='labeltext-box' type="text" id="build_name" name="build_name">
 
         <br><br>
 
-        <label for="description">Description:</label>
-        <textarea id="description" name="description"></textarea>
+        <label for="description"class='text-box'>Description:</label>
+        <textarea class='labeltext-box' id="description" name="description"></textarea>
 
         <br><br>
 
-        <label for="character">Character:</label>
-        <input type="text" id="character" name="character">
+        <label for="character" class='text-box'>Character:</label>
+        <input class='labeltext-box' type="text" id="character" name="character">
 
         <br><br>
 
-        <button type="submit">Create Build</button>
-
+        <button type="submit" class="login-button">Create Build</button>
+        <a class="login-button" href="/main">Back to Characters</a>
     </form>
 
 </body>

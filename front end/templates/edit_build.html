@@ -3,7 +3,7 @@
 
 <head>
     <title>Edit Build</title>
-    <link rel="stylesheet" href="/static/main_style.css">
+    <link rel="stylesheet" href="/static/login_style.css">
 </head>
 
 <body>
@@ -12,8 +12,9 @@
 
     <form action="/edit_build/{{ build[0] }}" method="POST">
 
-        <label for="build_name">Build Name:</label>
+        <label for="build_name" class='text-box'>Build Name:</label>
         <input
+            class='labeltext-box'
             type="text"
             id="build_name"
             name="build_name"
@@ -22,17 +23,18 @@
 
         <br><br>
 
-        <label for="description">Description:</label>
+        <label for="description" class='text-box'>Description:</label>
 
         <textarea
+            class='labeltext-box'
             id="description"
             name="description"
         >{{ build[4] }}</textarea>
 
         <br><br>
 
-        <button type="submit">Save Changes</button>
-
+        <button type="submit" class="login-button">Save Changes</button>
+        <a class="login-button" href="/main">Back to Characters</a>
     </form>
 
 </body>
