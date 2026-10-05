@@ -254,7 +254,7 @@ def save_edit(build_id):
     connection.close()
 
     return redirect("/main")
-@app.route("/delete-build/<int:build_id>", methods=["POST"])
+@app.route("/delete_build/<int:build_id>", methods=["POST"])
 def delete_build(build_id):
     connection = sqlite3.connect("database.db")
     cursor = connection.cursor()

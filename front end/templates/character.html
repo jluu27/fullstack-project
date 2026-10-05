@@ -37,23 +37,31 @@
         {% endif %}
         <a class="login-button" href="/main">Back to Characters</a>
     </div>
-
+    
+<div class="builds"> 
 <h1>Builds</h1>
 
+<div class = "build-list">
 {% for build in builds %}
 
-    <div>
+    <div class="build-card">
         <p>{{ build[3] }}</p>
         <p>{{ build[4] }}</p>
         <p>Created by: {{ build[1] }}</p>
+        
+        <div class="build-buttons">
         <a class="login-button" href="/edit_build/{{ build[0]}}"> Edit build </a>
-        <form class="login-button" action="/delete_build/{{ build[0] }}" method="POST">
-    <button type="submit">Delete</button>
-</form>
+        <form action="/delete_build/{{ build[0] }}" method="POST">
+    <button class="delete-button" type="submit">Delete</button>
+        </form>
+        </div>
     </div>
 
-{% endfor %}
 
+{% endfor %}
+</div>
+
+</div>
 </body>
 
 </html>
