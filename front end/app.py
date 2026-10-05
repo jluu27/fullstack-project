@@ -254,5 +254,19 @@ def save_edit(build_id):
     connection.close()
 
     return redirect("/main")
+@app.route("/delete-build/<int:build_id>", methods=["POST"])
+def delete_build(build_id):
+    connection = sqlite3.connect("database.db")
+    cursor = connection.cursor()
+
+    cursor.execute(
+        "DELETE FROM builds WHERE id = ?",
+        (build_id,)
+    )
+
+    connection.commit()
+    connection.close()
+
+    return redirect("/main")
 app.run(debug=True)
     
