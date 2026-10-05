@@ -42,7 +42,7 @@ p {
     height: 400px;
     width: 300px;
     transition: transform 0.25s ease, box-shadow 0.25s ease,
-                opacity 0.25s ease, filter 0.25s ease;
+                opacity 0.25s ease, filter 0.25s ease;        
 }
 .image-button:hover {
     transform: scale(1.05);
@@ -73,6 +73,7 @@ p {
     background: radial-gradient(circle at top, #008b51 0%, #00fd9c 70%);
     transition: transform 0.25s ease, box-shadow 0.25s ease,
                 opacity 0.25s ease, filter 0.25s ease;
+    animation: appear 1.5s ease-out;
 }
 .login-button:hover {
     transform: scale(1.05);
@@ -90,13 +91,18 @@ button.login-button  {
     justify-content: center;
     flex-direction: row;;
     gap: 100px; 
-
+    animation: appear 0.7s ease-out;
 }
 .character-page {
-    display: flex;
+    background:  radial-gradient(circle at center, #02c5bb 0%, #014864 70%);
+    padding: 10px;  
+    display: inline-flex;
     flex-direction: column;
     align-items: center;
+    margin-left: 0;
     gap: 15px;
+    float: left;
+    animation: appear 1.5s ease-out;
 }
 .character {
     width: 290px;
@@ -112,12 +118,21 @@ button.login-button  {
 }
 
 .nameEnglishRem, .nameChineseRem {
-    width: 150px;
-    height: 60px;
+    width: 100px;
+    height: 50px;
     transition: transform 0.25s ease, box-shadow 0.25s ease,
                 opacity 0.25s ease, filter 0.25s ease;
 }
-
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95); 
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1); 
+    }
+}
 @keyframes disappear {
     from {
         opacity: 1;

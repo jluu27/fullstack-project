@@ -21,6 +21,17 @@ cursor.execute("""
         english_name_image TEXT
 )
 """)
+
+cursor.execute("""
+    CREATE TABLE IF NOT EXISTS builds (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        username TEXT,
+        character TEXT,
+        build_name TEXT,
+        description TEXT
+)
+""")
+
 cursor.execute(
     "SELECT * FROM characters WHERE name = ?",
     ("Vindicta",)
