@@ -36,7 +36,7 @@
                      src="{{ url_for('static', filename=character[4]) }}"
                      alt="{{ character[1] }}">
 
-            {% else %}
+            {% elif character[1] == "Vindicta" or character[1] == "Violet" %}
 
                 <img class="nameChinese"
                      src="{{ url_for('static', filename=character[3]) }}"
@@ -44,7 +44,9 @@
 
                 <img class="nameEnglish"
                      src="{{ url_for('static', filename=character[4]) }}"
-                     alt="{{ character[1] }}">
+                     alt="">
+            {% else %}
+                <h2 class="character-name">{{ character[1] }}</h2>
 
 {% endif %}
         </button>

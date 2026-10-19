@@ -117,6 +117,8 @@ button.delete-button  {
 .character-page {
     background:  radial-gradient(circle at center, #02c5bb 0%, #014864 70%);
     padding: 10px;  
+    width: 400px;
+    height: 450px;
     display: inline-flex;
     flex-direction: column;
     align-items: center;
@@ -129,17 +131,29 @@ button.delete-button  {
     height: 240px;
     
 }
+.character-name {
+    font-family: "Georgia", serif;
+    font-size: 50px;
+    font-weight: bold;
+    color: white;
+    -webkit-text-stroke: 0.5px #003144;
+    text-align: center;
+    margin: 20px 0;
+}
 
 .nameEnglish, .nameChinese {
-    width: 250px;
+    height: 100%;
+    max-width: 70%;
+    object-fit: contain;
+    align-items: center;
     transition: transform 0.25s ease, box-shadow 0.25s ease,
                 opacity 0.25s ease, filter 0.25s ease;
 
 }
 
 .nameEnglishRem, .nameChineseRem {
-    width: 100px;
-    height: 50px;
+    width: 150px;
+    height: 60px;
     transition: transform 0.25s ease, box-shadow 0.25s ease,
                 opacity 0.25s ease, filter 0.25s ease;
 }
