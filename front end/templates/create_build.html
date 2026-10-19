@@ -8,8 +8,10 @@
 
 <body>
 
+    <div class="create_edit"> 
     <h1>Create a Build</h1>
-
+    
+    
     <form action="/create_build" method="POST">
 
         <label for="build_name" class='text-box'>Build Name:</label>
@@ -18,7 +20,7 @@
         <br><br>
 
         <label for="description"class='text-box'>Description:</label>
-        <textarea class='labeltext-box' id="description" name="description"></textarea>
+        <input class='labeltext-box' id="description" name="description"></input>
 
         <br><br>
 
@@ -30,7 +32,7 @@
         <button type="submit" class="login-button">Create Build</button>
         <a class="login-button" href="/main">Back to Characters</a>
     </form>
-
+    </div>
 </body>
 
 </html>

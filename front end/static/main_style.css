@@ -88,10 +88,11 @@ button.login-button  {
 .delete-button {
     display: inline-block;
     appearance: none;
-    color:red;
-    background: black;
+    color:black;
+    background: red;
     padding: 10px 20px;
     margin-top: 30px;
+    border: 2px solid #0d0b14;
     transition: transform 0.25s ease, box-shadow 0.25s ease,
                 opacity 0.25s ease, filter 0.25s ease;
     animation: appear 1.5s ease-out;
@@ -107,10 +108,10 @@ button.delete-button  {
     appearance: none;
 } 
 .character-list {
-    display:flex;
-    justify-content: center;
-    flex-direction: row;;
-    gap: 100px; 
+    display: grid; 
+    grid-template-columns: repeat(4, 300px);
+    justify-items: center;
+    gap: 30px; 
     animation: appear 0.7s ease-out;
 }
 .character-page {

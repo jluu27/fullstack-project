@@ -35,44 +35,226 @@ cursor.execute("""
 
 connection.commit()
 
-cursor.execute(
-    "SELECT * FROM characters WHERE name = ?",
-    ("Vindicta",)
+def add_character(name, character_image, chinese_name_image, english_name_image):
+    connection =  sqlite3.connect("database.db")
+    cursor = connection.cursor()
+    cursor.execute(
+        "SELECT * FROM characters WHERE name = ?",
+        (name,)
+    )
+
+    existing_character = cursor.fetchone()
+
+    if existing_character is None:
+      cursor.execute("""
+           INSERT INTO characters
+            (name, character_image, chinese_name_image, english_name_image)
+          VALUES (?, ?, ?, ?)
+      """, (
+            name,
+         character_image,
+         chinese_name_image,
+         english_name_image,
+     ))
+
+    connection.commit()
+    connection.close()
+      
+add_character(
+"Vindicta",
+"images/vindicta/vindictapfp.png",
+"images/vindicta/vindictacn.png",
+"images/vindicta/vindictaeng.png"
 )
 
-existing_character = cursor.fetchone()
-
-if existing_character is None:
-    cursor.execute("""
-        INSERT INTO characters
-        (name, character_image, chinese_name_image, english_name_image)
-        VALUES (?, ?, ?, ?)
-    """, (
-        "Vindicta",
-        "images/vindicta/vindictapfp.png",
-        "images/vindicta/vindictacn.png",
-        "images/vindicta/vindictaeng.png"
-    ))
-cursor.execute(
-    "SELECT * FROM characters WHERE name = ?",
-    ("Rem",)
+add_character(
+"Rem",
+"images/rem/rempfp.png",
+"images/rem/remCn.png",
+"images/rem/remeng.png"
+)
+add_character(
+"Abrams",
+"images/abrams/abrams.png",
+"",
+""
+)
+add_character(
+"Apollo",
+"images/apollo/apollo.png",
+"",
+""
+)
+add_character(
+"Baba",
+"images/baba/baba.png",
+"",
+""
+)
+add_character(
+"Bebop",
+"images/bebop/bebop.png",
+"",
+""
+)
+add_character(
+"Billy",
+"images/billy/billy.png",
+"",
+""
+)
+add_character(
+"Calico",
+"images/calico/calico.png",
+"",
+""
+)
+add_character(
+"Celeste",
+"images/celeste/celeste.png",
+"",
+""
+)
+add_character(
+"Deadman Danny",
+"images/danny/danny.png",
+"",
+""
+)
+add_character(
+"Doorman",
+"images/doorman/doorman.png",
+"",
+""
+)
+add_character(
+"Drifter",
+"images/drifter/drifter.png",
+"",
+""
+)
+add_character(
+"Dynamo",
+"images/dynamo/dynamo.png",
+"",
+""
+)
+add_character(
+"Graves",
+"images/graves/graves.png",
+"",
+""
+)
+add_character(
+"Gray Talon",
+"images/gray talon/talon.png",
+"",
+""
+)
+add_character(
+"Haze",
+"images/haze/haze.png",
+"",
+""
+)
+add_character(
+"Holiday",
+"images/holiday/holiday.png",
+"",
+""
+)
+add_character(
+"Infernus",
+"images/infernus/infernus.png",
+"",
+""
+)
+add_character(
+"Ivy",
+"images/ivy/ivy.png",
+"",
+""
+)
+add_character(
+"Kelvin",
+"images/kelvin/kelvin.png",
+"",
+""
+)
+add_character(
+"Lady Geist",
+"images/lady geist/geist.png",
+"",
+""
+)
+add_character(
+"Lash",
+"images/lash/lash.png",
+"",
+""
+)
+add_character(
+"Mcginnis",
+"images/mcginnis/mcginnis.png",
+"",
+""
 )
 
-existing_character = cursor.fetchone()
+add_character(
+"Mina",
+"images/mina/mina.png",
+"",
+""
+)
+add_character(
+"Mirage",
+"images/mirage/mirage.png",
+"",
+""
+)
 
-if existing_character is None:
-    cursor.execute("""
-        INSERT INTO characters
-        (name, character_image, chinese_name_image, english_name_image)
-        VALUES (?, ?, ?, ?)
-    """, (
-        "Rem",
-        "images/rem/rempfp.png",
-        "images/rem/remCn.png",
-        "images/rem/remeng.png"
-    ))
-connection.commit()
-connection.close()
+add_character(
+"Mo & Krill",
+"images/mo/mo.png",
+"",
+""
+)
+add_character(
+"Nurse Harrow",
+"images/nurse harrow/nurse harroW.png",
+"",
+""
+)
+
+add_character(
+"Paige",
+"images/paige/paige.png",
+"",
+""
+)
+
+add_character(
+"Paradox",
+"images/paradox/paradox.png",
+"",
+""
+)
+
+add_character(
+"Pocket",
+"images/pocket/pocket.png",
+"",
+""
+)
+
+add_character(
+"Rat King",
+"images/rat king/rat king.png",
+"",
+""
+)
+
+
 
 
 from flask import Flask, render_template, request, redirect, session, flash

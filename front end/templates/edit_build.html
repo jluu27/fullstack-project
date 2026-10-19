@@ -8,7 +8,9 @@
 
 <body>
 
+    <div>
     <h1>Edit Build</h1>
+    
 
     <form action="/edit_build/{{ build[0] }}" method="POST">
 
@@ -25,17 +27,18 @@
 
         <label for="description" class='text-box'>Description:</label>
 
-        <textarea
+        <input
             class='labeltext-box'
             id="description"
             name="description"
-        >{{ build[4] }}</textarea>
+        >{{ build[4] }}</input>
 
         <br><br>
 
         <button type="submit" class="login-button">Save Changes</button>
         <a class="login-button" href="/main">Back to Characters</a>
     </form>
+    </div>
 
 </body>
 
